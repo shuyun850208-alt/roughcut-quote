@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>粗花報價工作台</title>
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-title" content="粗花報價">
+<meta name="theme-color" content="#141210">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-34 -34 68 68'%3E%3Crect x='-9' y='-31' width='18' height='27' rx='4' fill='%23C4603A'/%3E%3Crect x='-9' y='-31' width='18' height='27' rx='4' fill='%234A7B7B' transform='rotate(72)'/%3E%3Crect x='-9' y='-31' width='18' height='27' rx='4' fill='%23D49B50' transform='rotate(144)'/%3E%3Crect x='-9' y='-31' width='18' height='27' rx='4' fill='%23D4785A' transform='rotate(216)'/%3E%3Crect x='-9' y='-31' width='18' height='27' rx='4' fill='%236BA3A3' transform='rotate(288)'/%3E%3Ccircle r='5' fill='%23C4603A'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap">
+<style>
+/* Layout: 手機＝編輯／預覽分頁切換；寬螢幕＝左表單、右 A4 紙本即時預覽。底部固定總價列。 */
+:root{
+  --bg:#EFE6D9; --panel:#F8F3EC; --panel-2:#E7DCCD; --ink:#141210; --ink-2:#6A5E51;
+  --line:#D6C9B8; --accent:#C4603A; --accent-2:#D4785A; --accent-soft:#F1DDD2; --on-accent:#FFFFFF;
+  --teal:#4A7B7B; --teal-soft:#DCE7E4; --gold:#D49B50; --stage:#DCD0BF; --ok:#3F7D5C;
+  --paper:#FFFDF9; --p-ink:#141210; --p-dim:#6B5F52; --p-line:#E6DBCC; --p-band:#F4EBDF;
+  --p-acc:#C4603A; --p-teal:#4A7B7B; --p-gold:#D49B50;
+  --f-display:'Noto Serif TC','Songti TC',serif;
+  --f-body:'Noto Sans TC','DM Sans','PingFang TC','Microsoft JhengHei',sans-serif;
+  --f-num:'DM Sans','Noto Sans TC',sans-serif;
+  --f-mono:'DejaVu Sans Mono','Courier New',monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141210; --panel:#1D1A17; --panel-2:#2A2520; --ink:#F0E6D8; --ink-2:#A69786;
+  --line:#3A332C; --accent:#D4785A; --accent-2:#E08A6A; --accent-soft:#33221A; --on-accent:#1A1310;
+  --teal:#6BA3A3; --teal-soft:#1F2D2C; --gold:#D49B50; --stage:#0D0B0A; --ok:#6DB38C; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#141210; --panel:#1D1A17; --panel-2:#2A2520; --ink:#F0E6D8; --ink-2:#A69786;
+  --line:#3A332C; --accent:#D4785A; --accent-2:#E08A6A; --accent-soft:#33221A; --on-accent:#1A1310;
+  --teal:#6BA3A3; --teal-soft:#1F2D2C; --gold:#D49B50; --stage:#0D0B0A; --ok:#6DB38C; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 160px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);display:flex;align-items:center;gap:12px;padding-block:12px;border-bottom:1px solid var(--line);margin-bottom:16px;flex-wrap:wrap}
+.top .mark{display:flex;align-items:center;gap:10px;min-width:0;margin-right:auto}
+.top .mark svg{width:34px;height:34px;flex:none}
+.top h1{font-family:var(--f-display);font-size:18px;margin:0;line-height:1.2}
+.top .sub{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.tabs{display:flex;background:var(--panel-2);border-radius:999px;padding:3px}
+.tabs button{border:0;background:transparent;padding:6px 16px;border-radius:999px;font-size:14px;color:var(--ink-2)}
+.tabs button[aria-pressed="true"]{background:var(--panel);color:var(--ink);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+.layout{max-width:1320px;margin:0 auto;display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:1024px){
+  .layout{grid-template-columns:440px minmax(0,1fr)}
+  .tabs{display:none}
+  #previewPane{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);max-height:calc(100vh - 190px);overflow:auto;border-radius:16px}
+}
+@media (max-width:1023px){
+  body[data-view="edit"] #previewPane{display:none}
+  body[data-view="preview"] #editorPane{display:none}
+}
+
+/* editor */
+#editorPane{display:flex;flex-direction:column;gap:12px;min-width:0}
+.sample{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--teal-soft);color:var(--ink);border-radius:12px;padding:10px 14px;font-size:13.5px}
+.sample button{border:1px solid var(--teal);background:transparent;color:var(--teal);border-radius:999px;padding:4px 12px;font-size:13px;white-space:nowrap}
+details.sec{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+details.sec>summary{list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;font-weight:700;cursor:pointer}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary .num{font-family:var(--f-mono);font-size:11px;color:var(--accent);letter-spacing:.08em}
+details.sec>summary .meta{margin-left:auto;font-weight:500;font-size:13px;color:var(--ink-2);font-family:var(--f-num);font-variant-numeric:tabular-nums}
+details.sec>summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);margin-left:4px;transition:transform .2s}
+details.sec[open]>summary::after{transform:rotate(-135deg)}
+.body{padding:0 16px 16px;display:flex;flex-direction:column;gap:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid2>*{min-width:0}
+.full{grid-column:1/-1}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--ink-2)}
+label.f input,label.f select,label.f textarea{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 11px;font-size:15px;color:var(--ink);width:100%;min-width:0}
+label.f textarea{resize:vertical;min-height:70px}
+.hint{font-size:12px;color:var(--ink-2);margin:0}
+.hint.warn{color:var(--accent)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button,.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13.5px;color:var(--ink)}
+.seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.chip .p{font-family:var(--f-num);font-size:12px;opacity:.75;margin-left:4px}
+.card{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.card-h{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-2)}
+.link{border:0;background:none;color:var(--accent);font-size:13px;padding:2px 0;text-decoration:underline;text-underline-offset:3px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.stepper button{border:0;background:transparent;width:36px;height:34px;font-size:18px;color:var(--ink)}
+.stepper output{min-width:34px;text-align:center;font-family:var(--f-num);font-weight:700;font-variant-numeric:tabular-nums}
+.add{border:1.5px dashed var(--line);background:transparent;border-radius:12px;padding:10px;color:var(--ink-2);font-size:14px}
+.add:hover{border-color:var(--accent);color:var(--accent)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14.5px}
+.switch small{display:block;color:var(--ink-2);font-size:12px}
+.switch input{appearance:none;width:44px;height:26px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .2s;cursor:pointer}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--panel);transition:transform .2s}
+.switch input:checked{background:var(--accent)}
+.switch input:checked::after{transform:translateX(18px)}
+.xrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.xrow .n{grid-column:1/-1}
+.clauses{display:flex;flex-direction:column;gap:2px}
+.clause{display:flex;gap:10px;align-items:flex-start;padding:8px 4px;border-bottom:1px dashed var(--line);font-size:14.5px}
+.clause:last-child{border-bottom:0}
+.clause input{width:18px;height:18px;accent-color:var(--accent);margin-top:3px;flex:none}
+.clause .tag{font-size:11px;border-radius:999px;padding:1px 8px;margin-left:6px;background:var(--teal-soft);color:var(--teal);white-space:nowrap}
+.clause .tag.off{background:var(--panel-2);color:var(--ink-2)}
+.clause small{display:block;color:var(--ink-2);font-size:12px}
+.rec{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.rec:last-child{border-bottom:0}
+.rec .info{min-width:0;flex:1}
+.rec .info b{font-family:var(--f-mono);font-size:12px;display:block}
+.rec .info span{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.btn{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:8px 12px;font-size:13.5px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
+.btn.danger{color:var(--accent);border-color:var(--accent)}
+
+/* preview */
+#previewPane{background:var(--stage);border-radius:16px;padding:14px;min-width:0}
+.pv-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.pv-bar .lbl{font-size:12.5px;color:var(--ink-2)}
+#pages{display:flex;flex-direction:column;gap:14px;align-items:center}
+.pwrap{position:relative;overflow:hidden;box-shadow:0 6px 24px rgba(20,18,16,.18);border-radius:2px;background:var(--paper)}
+.pwrap .page{transform-origin:0 0;position:absolute;left:0;top:0}
+
+/* dock */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--panel);border-top:1px solid var(--line);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.dock-in{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dock .tot{margin-right:auto;line-height:1.2}
+.dock .tot small{display:block;font-size:11.5px;color:var(--ink-2)}
+.dock .tot b{font-family:var(--f-num);font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.dock .acts{display:flex;gap:8px}
+.dock .acts .btn{padding:10px 12px}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:13.5px;z-index:20;max-width:calc(100% - 32px);text-align:center}
+.modal{position:fixed;inset:0;z-index:30;background:rgba(10,9,8,.6);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal-in{background:var(--panel);border-radius:16px;padding:16px;max-width:560px;width:100%;max-height:100%;overflow:auto;display:flex;flex-direction:column;gap:12px}
+.modal-in img{width:100%;border-radius:6px;border:1px solid var(--line)}
+.modal-in textarea{width:100%;min-height:260px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px;font-size:13px}
+
+/* ===== paper (固定亮色紙本，匯出用) ===== */
+.paper{font-family:var(--f-body);color:var(--p-ink);font-size:12.5px;line-height:1.65;background:var(--paper)}
+.page{width:794px;height:1123px;padding:52px 60px 0;background:var(--paper)}
+.pbody{height:999px;overflow:hidden}
+.pfoot{height:72px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--p-line);font-size:10.5px;color:var(--p-dim);font-family:var(--f-mono);letter-spacing:.04em}
+#measure{position:absolute;left:-99999px;top:0;width:674px;visibility:hidden}
+.blk{margin-bottom:16px}
+.q-head{display:flex;justify-content:space-between;align-items:flex-start}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:54px;height:54px}
+.brand .bn{font-family:var(--f-display);font-size:19px;font-weight:700;line-height:1.2}
+.brand .bn .mono{font-family:var(--f-mono);font-size:13px;letter-spacing:.12em;color:var(--p-acc);margin-left:4px}
+.brand .tg{font-size:11px;color:var(--p-teal);letter-spacing:.08em}
+.q-title{text-align:right}
+.q-title .t{font-family:var(--f-display);font-size:30px;font-weight:700;letter-spacing:.18em;line-height:1.1}
+.q-title .en{font-family:var(--f-mono);font-size:11px;letter-spacing:.32em;color:var(--p-dim);margin-top:4px}
+.rule{height:3px;background:var(--p-acc);position:relative;margin-bottom:20px}
+.rule::after{content:"";position:absolute;right:0;top:0;width:22%;height:3px;background:var(--p-teal)}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--p-line);border-radius:4px}
+.meta>div{padding:9px 12px;border-right:1px solid var(--p-line)}
+.meta>div:last-child{border-right:0}
+.meta .k{font-size:10px;color:var(--p-dim);letter-spacing:.1em}
+.meta .v{font-weight:700;font-family:var(--f-num);font-size:12.5px}
+.meta .v.mono{font-family:var(--f-mono);font-size:11.5px}
+.parties{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.party{background:var(--p-band);border-radius:4px;padding:12px 14px}
+.party h5{margin:0 0 6px;font-size:10.5px;letter-spacing:.16em;color:var(--p-acc);font-weight:700}
+.party .nm{font-size:14.5px;font-weight:700;margin-bottom:2px}
+.party .ln{color:var(--p-dim);font-size:11.5px}
+.desc h5,.notes h5,.pay h5{margin:0 0 6px;font-size:11px;letter-spacing:.14em;color:var(--p-teal);font-weight:700}
+.desc p{margin:0;white-space:pre-wrap}
+table.items{width:100%;border-collapse:collapse;font-size:12px}
+table.items th{font-size:10.5px;color:var(--p-dim);font-weight:500;letter-spacing:.08em;text-align:left;padding:7px 8px;border-bottom:1.5px solid var(--p-ink)}
+table.items td{padding:8px;border-bottom:1px solid var(--p-line);vertical-align:top}
+table.items .r{text-align:right;font-family:var(--f-num);font-variant-numeric:tabular-nums;white-space:nowrap}
+table.items tr.grp td{background:var(--p-band);font-weight:700;font-size:11.5px;border-bottom:0;padding:6px 8px}
+table.items tr.grp td .r{color:var(--p-dim)}
+table.items .sp{color:var(--p-dim);font-size:11px}
+.sum{display:grid;grid-template-columns:1fr 250px;gap:20px;align-items:start}
+.sum .lines{display:flex;flex-direction:column;gap:4px;font-size:12px}
+.sum .lines div{display:flex;justify-content:space-between}
+.sum .lines .neg{color:var(--p-acc)}
+.sum .lines span:last-child{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.sum .grand{margin-top:6px;padding-top:8px;border-top:1.5px solid var(--p-ink);display:flex;justify-content:space-between;align-items:baseline}
+.sum .grand b{font-family:var(--f-num);font-size:22px;color:var(--p-acc);letter-spacing:-.01em}
+.sum .cn{font-size:10.5px;color:var(--p-dim);text-align:right}
+.pay{background:var(--p-band);border-radius:4px;padding:12px 14px}
+.pay .ln{display:flex;justify-content:space-between;font-size:12px}
+.pay .ln span:last-child{font-family:var(--f-num);font-weight:700}
+.pay .bank{margin-top:8px;padding-top:8px;border-top:1px dashed var(--p-line);font-size:11.5px;color:var(--p-dim)}
+.notes ul{margin:0;padding-left:18px;color:var(--p-dim);font-size:11.5px}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:8px}
+.sign .s{border-top:1px solid var(--p-ink);padding-top:6px;font-size:11px;color:var(--p-dim);display:flex;justify-content:space-between}
+.c-head{text-align:center}
+.c-head .t{font-family:var(--f-display);font-size:24px;font-weight:700;letter-spacing:.14em}
+.c-head .no{font-family:var(--f-mono);font-size:11px;color:var(--p-dim);letter-spacing:.08em;margin-top:4px}
+.c-intro{font-size:12.5px}
+.c-intro p{margin:0 0 4px}
+.cl h4{margin:0 0 4px;font-family:var(--f-display);font-size:13.5px;font-weight:700}
+.cl h4 .no{color:var(--p-acc);margin-right:8px}
+.cl p{margin:0 0 3px;text-align:justify}
+.cl ol{margin:0;padding-left:20px}
+.cl ol li{margin-bottom:2px}
+.c-sign{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.c-sign .box{border:1px solid var(--p-line);border-radius:4px;padding:12px 14px;font-size:12px}
+.c-sign .box h5{margin:0 0 8px;font-size:11px;letter-spacing:.14em;color:var(--p-acc)}
+.c-sign .box div{display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--p-line)}
+.c-sign .box div span:first-child{color:var(--p-dim);white-space:nowrap}
+.c-sign .box .stamp{height:62px;align-items:flex-start}
+.c-date{text-align:center;letter-spacing:.3em;margin-top:14px;font-size:12.5px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="mark">
+    <svg viewBox="-34 -34 68 68" aria-hidden="true"><g>
+      <rect x="-9" y="-31" width="18" height="27" rx="4" fill="#C4603A" opacity=".95"/>
+      <rect x="-9" y="-31" width="18" height="27" rx="4" fill="#4A7B7B" opacity=".78" transform="rotate(72)"/>
+      <rect x="-9" y="-31" width="18" height="27" rx="4" fill="#D49B50" opacity=".58" transform="rotate(144)"/>
+      <rect x="-9" y="-31" width="18" height="27" rx="4" fill="#D4785A" opacity=".42" transform="rotate(216)"/>
+      <rect x="-9" y="-31" width="18" height="27" rx="4" fill="#6BA3A3" opacity=".30" transform="rotate(288)"/>
+      <circle r="5" fill="#C4603A"/></g></svg>
+    <div><h1>粗花報價工作台</h1><div class="sub">ROUGHCUT · QUOTE &amp; CONTRACT</div></div>
+  </div>
+  <div class="tabs" role="group" aria-label="切換畫面">
+    <button id="tabEdit" data-act="view" data-v="edit" aria-pressed="true">編輯</button>
+    <button id="tabPrev" data-act="view" data-v="preview" aria-pressed="false">預覽</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section id="editorPane">
+    <div class="sample" id="sampleBar"><span>目前填的是<b>範例資料</b>，看完效果就清空重填吧。</span><button data-act="clearSample">清空重填</button></div>
+
+    <details class="sec" open>
+      <summary><span class="num">01</span>案件資訊</summary>
+      <div class="body"><div class="grid2">
+        <label class="f">報價單號<input id="quoteNo" data-k="s.quoteNo"></label>
+        <label class="f">報價日期<input id="quoteDate" type="date" data-k="s.quoteDate"></label>
+        <label class="f full">案件名稱<input id="project" data-k="s.project" placeholder="例如：秋季新品 Reels 3 支"></label>
+        <label class="f">報價有效天數<input id="validDays" type="number" min="1" inputmode="numeric" data-k="s.validDays"></label>
+        <label class="f">預計交件日（選填）<input id="dueDate" type="date" data-k="s.dueDate"></label>
+        <label class="f full">專案說明<textarea id="desc" data-k="s.desc" placeholder="這次要做什麼、給誰看、風格方向"></textarea></label>
+      </div></div>
+    </details>
+
+    <details class="sec" open>
+      <summary><span class="num">02</span>委託方</summary>
+      <div class="body"><div class="grid2">
+        <label class="f full">委託方名稱（品牌／店家）<input id="cName" data-k="s.client.name"></label>
+        <label class="f">聯絡人<input id="cContact" data-k="s.client.contact"></label>
+        <label class="f">電話<input id="cPhone" type="tel" data-k="s.client.phone"></label>
+        <label class="f">Email<input id="cEmail" type="email" data-k="s.client.email"></label>
+        <label class="f">統一編號（選填）<input id="cTax" inputmode="numeric" data-k="s.client.taxId"></label>
+        <label class="f full">IG／社群帳號（作品署名用）<input id="cIg" data-k="s.client.ig" placeholder="@帳號"></label>
+      </div></div>
+    </details>
+
+    <details class="sec" open>
+      <summary><span class="num">03</span>剪輯影片<span class="meta" id="mEdit"></span></summary>
+      <div class="body">
+        <div id="videoList" style="display:flex;flex-direction:column;gap:10px"></div>
+        <button class="add" data-act="vadd">＋ 新增另一種長度的影片</button>
+        <p class="hint">基礎剪輯含素材挑選、排列剪輯、配樂、基本轉場。加購項目會乘上支數。</p>
+      </div>
+    </details>
+
+    <details class="sec" open>
+      <summary><span class="num">04</span>外出拍攝<span class="meta" id="mShoot"></span></summary>
+      <div class="body">
+        <label class="switch"><span>這次需要到現場拍攝<small>拍攝費、交通費不參與多支折扣</small></span><input type="checkbox" id="shootOn" data-k="s.shoot.on"></label>
+        <div id="shootBox" style="display:flex;flex-direction:column;gap:12px">
+          <div class="row"><span style="font-size:14px">拍攝時數</span>
+            <span class="stepper"><button data-act="shours" data-d="-1" aria-label="減少時數">−</button><output id="shootHours"></output><button data-act="shours" data-d="1" aria-label="增加時數">＋</button></span>
+            <span class="hint" id="shootRateHint"></span></div>
+          <div><div class="hint" style="margin-bottom:6px">地點區域（估交通費）</div><div class="seg" id="locSeg"></div></div>
+          <div class="grid2">
+            <label class="f">拍攝日期<input id="shootDate" type="date" data-k="s.shoot.date"></label>
+            <label class="f">拍攝地點<input id="shootPlace" data-k="s.shoot.place" placeholder="店名或地址"></label>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="num">05</span>其他自訂項目<span class="meta" id="mOther"></span></summary>
+      <div class="body">
+        <div id="extraList" style="display:flex;flex-direction:column;gap:10px"></div>
+        <button class="add" data-act="xadd">＋ 新增項目（腳本企劃、封面設計、素材費…）</button>
+      </div>
+    </details>
+
+    <details class="sec" open>
+      <summary><span class="num">06</span>優惠與付款</summary>
+      <div class="body">
+        <label class="switch"><span>多支優惠（剪輯項目打折）<small id="multiHint"></small></span><input type="checkbox" id="multiOn"></label>
+        <label class="switch"><span>急件<small id="rushHint"></small></span><input type="checkbox" id="rushOn" data-k="s.rush"></label>
+        <label class="switch"><span>加計 5% 營業稅<small>有開發票再打開</small></span><input type="checkbox" id="taxOn" data-k="s.tax"></label>
+        <div class="grid2">
+          <label class="f">額外折讓（NT$）<input id="allowance" type="number" min="0" inputmode="numeric" data-k="s.allowance"></label>
+          <label class="f">訂金比例
+            <select id="depositPct" data-k="s.depositPct"><option value="0">不收訂金</option><option value="30">30%</option><option value="50">50%</option><option value="100">簽約一次付清</option></select></label>
+        </div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="num">07</span>合約條款<span class="meta" id="mClause"></span></summary>
+      <div class="body">
+        <p class="hint">依你選的服務自動勾選，也可以手動調整。標「自動」的會跟著服務內容變。</p>
+        <div class="clauses" id="clauseList"></div>
+        <div class="grid2">
+          <label class="f">免費修改次數<input id="revisions" type="number" min="0" inputmode="numeric" data-k="s.revisions"></label>
+          <label class="f">超過次數每次加收<input id="revisionFee" type="number" min="0" inputmode="numeric" data-k="s.revisionFee"></label>
+          <label class="f">訂金付款期限（簽約後 N 日）<input id="depositDays" type="number" min="0" inputmode="numeric" data-k="s.depositDays"></label>
+          <label class="f">尾款付款期限（交件後 N 日）<input id="balanceDays" type="number" min="0" inputmode="numeric" data-k="s.balanceDays"></label>
+          <label class="f full">管轄法院<input id="court" data-k="s.court"></label>
+          <label class="f full">其他約定（會成為最後一條）<textarea id="otherTerms" data-k="s.otherTerms" placeholder="例如：成品需於 11/15 前上架"></textarea></label>
+        </div>
+        <p class="hint warn">條款是通用範本，退款比例、修改費等數字請依你自己的規則調整；金額大的案子建議請專業人士看過。</p>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="num">08</span>我的資料（乙方）</summary>
+      <div class="body">
+        <p class="hint">只存在你這台裝置的瀏覽器，不會上傳，也不會出現在別人打開的頁面。</p>
+        <div class="grid2">
+          <label class="f">負責人姓名<input id="meOwner" data-k="me.owner"></label>
+          <label class="f">聯絡電話<input id="mePhone" type="tel" data-k="me.phone"></label>
+          <label class="f">Email<input id="meEmail" type="email" data-k="me.email"></label>
+          <label class="f">LINE 官方帳號<input id="meLine" data-k="me.line"></label>
+          <label class="f">匯款銀行（含代碼）<input id="meBank" data-k="me.bank" placeholder="例如：822 中國信託 花蓮分行"></label>
+          <label class="f">戶名<input id="meAccName" data-k="me.accName"></label>
+          <label class="f full">帳號<input id="meAcc" inputmode="numeric" data-k="me.acc"></label>
+        </div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="num">09</span>價目設定</summary>
+      <div class="body">
+        <p class="hint">預設帶入你目前客人估價頁的價格。改這裡只影響這個工作台。</p>
+        <div class="grid2">
+          <label class="f">基礎剪輯｜30 秒內<input id="pS30" type="number" data-k="p.dur.s30"></label>
+          <label class="f">基礎剪輯｜30 秒～1 分<input id="pS60" type="number" data-k="p.dur.s60"></label>
+          <label class="f">基礎剪輯｜1～3 分<input id="pM3" type="number" data-k="p.dur.m3"></label>
+          <label class="f">逐字字幕／支<input id="pSub" type="number" data-k="p.addon.subtitle"></label>
+          <label class="f">字卡、動態文字／支<input id="pFx" type="number" data-k="p.addon.textfx"></label>
+          <label class="f">音效設計／支<input id="pSfx" type="number" data-k="p.addon.sfx"></label>
+          <label class="f">調色濾鏡／支<input id="pCol" type="number" data-k="p.addon.color"></label>
+          <label class="f">拍攝／小時<input id="pRate" type="number" data-k="p.shootRate"></label>
+          <label class="f">交通費｜近郊<input id="pNear" type="number" data-k="p.transport.nearby"></label>
+          <label class="f">交通費｜遠程<input id="pFar" type="number" data-k="p.transport.far"></label>
+          <label class="f">多支門檻（支）<input id="pMin" type="number" data-k="p.multiMin"></label>
+          <label class="f">多支折扣（%）<input id="pMulti" type="number" data-k="p.multiRate"></label>
+          <label class="f">急件加收（%）<input id="pRush" type="number" data-k="p.rushRate"></label>
+          <label class="f">急件工作天<input id="pRushDays" type="number" data-k="p.rushDays"></label>
+          <label class="f full">一般交件工作天<input id="pDays" data-k="p.normalDays"></label>
+        </div>
+        <button class="link" data-act="resetPrices" style="align-self:flex-start">恢復預設價目</button>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span class="num">10</span>報價紀錄<span class="meta" id="mRec"></span></summary>
+      <div class="body">
+        <div class="row"><button class="btn pri" data-act="save">儲存這份報價</button><button class="btn" data-act="newq">開新報價</button></div>
+        <div id="recList"></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="previewPane" aria-label="文件預覽">
+    <div class="pv-bar"><span class="lbl">輸出內容</span>
+      <div class="seg" id="modeSeg">
+        <button data-act="mode" data-v="quote">報價單</button>
+        <button data-act="mode" data-v="both">報價單＋合約</button>
+        <button data-act="mode" data-v="contract">合約</button>
+      </div></div>
+    <div id="pages"></div>
+  </section>
+</main>
+
+<div class="dock"><div class="dock-in">
+  <div class="tot"><small id="dockSub">預估總價</small><b id="dockTotal">NT$0</b></div>
+  <div class="acts">
+    <button class="btn" data-act="copy">複製文字</button>
+    <button class="btn" data-act="png">存圖片</button>
+    <button class="btn pri" data-act="pdf">下載 PDF</button>
+  </div>
+</div></div>
+
+<div id="measure" class="paper"></div>
+<div class="toast" id="toast" hidden></div>
+<div class="modal" id="modal" hidden><div class="modal-in" id="modalIn"></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s);
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const money=n=>'NT$'+Math.round(n).toLocaleString('en-US');
+const pad=n=>String(n).padStart(2,'0');
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+const addDays=(iso,n)=>{if(!iso)return '';const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+Number(n||0));return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+const fmtD=iso=>iso?iso.replace(/-/g,'/'):'—';
+const roc=iso=>{if(!iso)return '中華民國　　年　　月　　日';const [y,m,d]=iso.split('-').map(Number);return `中華民國 ${y-1911} 年 ${m} 月 ${d} 日`};
+
+const DUR={s30:'30 秒內',s60:'30 秒～1 分鐘',m3:'1～3 分鐘'};
+const ADDON={subtitle:'逐字字幕',textfx:'字卡／動態文字',sfx:'音效設計',color:'調色／濾鏡'};
+const LOC={local:'花蓮市區',nearby:'花蓮近郊',far:'遠程'};
+const LOCD={local:'不加收',nearby:'吉安、壽豐、新城',far:'鳳林、瑞穗、玉里等'};
+const DEF_P={dur:{s30:600,s60:900,m3:1500},addon:{subtitle:200,textfx:200,sfx:100,color:100},shootRate:300,transport:{local:0,nearby:300,far:800},multiMin:3,multiRate:10,rushRate:30,rushDays:3,normalDays:'5～7'};
+const DEF_ME={owner:'',phone:'',email:'',line:'https://lin.ee/SpKUH9p',bank:'',accName:'',acc:''};
+
+function seqNo(bump){
+  const t=today().replace(/-/g,'');let q=LS.get('rc-seq',{d:'',n:0});
+  if(q.d!==t)q={d:t,n:0};
+  const n=bump?q.n+1:Math.max(q.n,1);
+  if(bump){q.n=n;LS.set('rc-seq',q)}
+  return `QT-${t}-${pad(n)}`;
+}
+function blank(){return{sample:false,quoteNo:seqNo(true),quoteDate:today(),validDays:14,project:'',desc:'',dueDate:'',
+  client:{name:'',contact:'',phone:'',email:'',taxId:'',ig:''},
+  videos:[{id:uid(),dur:'s60',count:1,addons:[]}],
+  shoot:{on:false,hours:2,loc:'local',date:'',place:''},
+  extras:[],multi:null,rush:false,tax:false,allowance:0,depositPct:50,
+  clauseOv:{},revisions:2,revisionFee:200,depositDays:3,balanceDays:7,court:'臺灣花蓮地方法院',otherTerms:'',mode:'both'}}
+function sample(){const s=blank();Object.assign(s,{sample:true,project:'（範例）秋季新品 Reels',
+  desc:'以門市實拍素材剪輯 3 支直式短影音，介紹秋季新品與店內氛圍，風格走溫暖電影感。',
+  client:{name:'（範例）小島咖啡',contact:'王小姐',phone:'0912-000-000',email:'',taxId:'',ig:'@island.coffee'},
+  videos:[{id:uid(),dur:'s60',count:3,addons:['subtitle','textfx']}],
+  shoot:{on:true,hours:3,loc:'nearby',date:addDays(today(),7),place:'（範例）吉安門市'}});return s}
+
+let S=LS.get('rc-draft',null)||sample();
+let ME=Object.assign({},DEF_ME,LS.get('rc-me',{}));
+let P=deepMerge(JSON.parse(JSON.stringify(DEF_P)),LS.get('rc-prices',{}));
+function deepMerge(a,b){for(const k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k]))a[k]=deepMerge(a[k]||{},b[k]);else a[k]=b[k]}return a}
+const ROOT={s:()=>S,me:()=>ME,p:()=>P};
+function getK(path){const [r,...ks]=path.split('.');let o=ROOT[r]();for(const k of ks)o=o==null?undefined:o[k];return o}
+function setK(path,v){const [r,...ks]=path.split('.');let o=ROOT[r]();for(let i=0;i<ks.length-1;i++)o=o[ks[i]];o[ks[ks.length-1]]=v}
+function persist(){LS.set('rc-draft',S);LS.set('rc-me',ME);LS.set('rc-prices',P)}
+
+/* ---------- 計算 ---------- */
+function calc(){
+  const items=[];let videoCount=0;
+  S.videos.forEach(v=>{const c=Math.max(0,+v.count||0);if(!c)return;videoCount+=c;
+    items.push({cat:'edit',name:`基礎剪輯（${DUR[v.dur]}）`,spec:'9:16 直式・含配樂、轉場',qty:c,unit:'支',price:+P.dur[v.dur]||0});
+    v.addons.forEach(a=>items.push({cat:'edit',name:`${ADDON[a]}`,spec:`搭配 ${DUR[v.dur]} 影片`,qty:c,unit:'支',price:+P.addon[a]||0}))});
+  if(S.shoot.on){const h=Math.max(1,+S.shoot.hours||1);
+    items.push({cat:'shoot',name:'外出拍攝',spec:'到場拍攝、基本運鏡',qty:h,unit:'小時',price:+P.shootRate||0});
+    const t=+P.transport[S.shoot.loc]||0;if(t>0)items.push({cat:'shoot',name:`交通費（${LOC[S.shoot.loc]}）`,spec:S.shoot.place||LOCD[S.shoot.loc],qty:1,unit:'趟',price:t})}
+  S.extras.forEach(x=>{if(!x.name&&!+x.price)return;items.push({cat:'other',name:x.name||'未命名項目',spec:x.spec||'',qty:+x.qty||1,unit:x.unit||'式',price:+x.price||0})});
+  items.forEach(i=>i.sub=i.qty*i.price);
+  const sum=c=>items.filter(i=>i.cat===c).reduce((a,i)=>a+i.sub,0);
+  const edit=sum('edit'),shoot=sum('shoot'),other=sum('other');
+  const autoMulti=videoCount>=(+P.multiMin||3);
+  const multi=S.multi==null?autoMulti:S.multi;
+  const discount=multi?Math.round(edit*(+P.multiRate||0)/100):0;
+  const allowance=Math.max(0,+S.allowance||0);
+  const base=Math.max(0,edit+shoot+other-discount-allowance);
+  const rush=S.rush?Math.round(base*(+P.rushRate||0)/100):0;
+  const tax=S.tax?Math.round((base+rush)*0.05):0;
+  const total=base+rush+tax;
+  const pct=+S.depositPct||0;const deposit=Math.round(total*pct/100);
+  return{items,videoCount,edit,shoot,other,autoMulti,multi,discount,allowance,rush,tax,total,pct,deposit,balance:total-deposit}
+}
+function cnAmount(n){n=Math.round(n);if(n<=0)return '零元整';const d='零壹貳參肆伍陸柒捌玖',u=['','拾','佰','仟'],big=['','萬','億'];
+  const g=[];let x=n;while(x>0){g.push(x%10000);x=Math.floor(x/10000)}let out='',zp=false;
+  for(let gi=g.length-1;gi>=0;gi--){const v=g[gi];if(v===0){zp=out!=='';continue}
+    const ds=[Math.floor(v/1000),Math.floor(v/100)%10,Math.floor(v/10)%10,v%10];let s='',st=false,gz=false;
+    for(let i=0;i<4;i++){if(ds[i]===0){if(st)gz=true}else{if(gz){s+='零';gz=false}s+=d[ds[i]]+u[3-i];st=true}}
+    if(out!==''&&(zp||v<1000))out+='零';out+=s+big[gi];zp=false}
+  return out+'元整'}
+const CN='零一二三四五六七八九十';
+const cnNum=n=>n<=10?CN[n]:n<20?'十'+CN[n-10]:CN[Math.floor(n/10)]+'十'+(n%10?CN[n%10]:'');
+
+/* ---------- 合約條款 ---------- */
+const CLAUSES=[
+  {k:'scope',t:'合作內容',auto:()=>true},
+  {k:'fee',t:'費用與付款',auto:()=>true},
+  {k:'schedule',t:'製作時程與交件',auto:()=>true},
+  {k:'material',t:'素材提供與授權',auto:c=>c.videoCount>0,d:'有剪輯影片時'},
+  {k:'revision',t:'修改次數',auto:c=>c.videoCount>0,d:'有剪輯影片時'},
+  {k:'shoot',t:'拍攝安排',auto:()=>S.shoot.on,d:'有外出拍攝時'},
+  {k:'rush',t:'急件',auto:()=>S.rush,d:'勾選急件時'},
+  {k:'rights',t:'著作權與使用範圍',auto:()=>true},
+  {k:'portfolio',t:'作品公開與署名',auto:()=>true,d:'允許放作品集；取消勾選＝本案不公開'},
+  {k:'cancel',t:'取消與退款',auto:()=>true},
+  {k:'archive',t:'檔案保存',auto:()=>true},
+  {k:'confidential',t:'保密',auto:()=>false,d:'新品、未公開活動建議勾選'},
+  {k:'dispute',t:'其他與爭議處理',auto:()=>true}];
+const clauseOn=(k,c)=>{const o=S.clauseOv[k];return o==null?CLAUSES.find(x=>x.k===k).auto(c):o};
+
+function clauseText(k,c){
+  const cn=esc(S.client.name||'甲方');const proj=esc(S.project||'短影音製作');
+  const vids=S.videos.filter(v=>+v.count>0).map(v=>`${DUR[v.dur]}影片 ${v.count} 支${v.addons.length?'（含'+v.addons.map(a=>ADDON[a]).join('、')+'）':''}`);
+  switch(k){
+  case 'scope':{const li=[...vids];if(S.shoot.on)li.push(`外出拍攝 ${S.shoot.hours} 小時（${LOC[S.shoot.loc]}${S.shoot.place?'・'+esc(S.shoot.place):''}）`);
+    S.extras.filter(x=>x.name).forEach(x=>li.push(esc(x.name)+(x.qty>1?` × ${x.qty}`:'')));
+    return `<p>甲方委託乙方製作「${proj}」，製作項目、規格與數量以報價單 ${esc(S.quoteNo)} 所列為準。報價單為本契約附件，與本契約具同等效力。本案內容如下：</p><ol>${li.map(x=>`<li>${x}</li>`).join('')}</ol><p>成品規格為 9:16 直式影片，適用 IG Reels、TikTok、抖音等平台。</p>`}
+  case 'fee':{let pay;
+    if(c.pct>=100)pay=`<li>甲方應於簽約後 ${S.depositDays} 日內一次付清全額 ${money(c.total)}，乙方於款項入帳後開始製作。</li>`;
+    else if(c.pct<=0)pay=`<li>甲方應於乙方交付成品並確認後 ${S.balanceDays} 日內一次付清全額 ${money(c.total)}。</li>`;
+    else pay=`<li>訂金：簽約後 ${S.depositDays} 日內支付總額 ${c.pct}%，計 ${money(c.deposit)}，乙方於訂金入帳後安排製作。</li><li>尾款：乙方交付成品並經甲方確認後 ${S.balanceDays} 日內支付 ${money(c.balance)}，乙方於尾款入帳後交付最終成品檔案。</li>`;
+    const bank=ME.bank||ME.acc?`<p>匯款帳戶：${esc(ME.bank)}　戶名：${esc(ME.accName)}　帳號：${esc(ME.acc)}</p>`:'';
+    return `<p>本案費用總計新臺幣${cnAmount(c.total)}（${money(c.total)}）${S.tax?'，已含 5% 營業稅':'，未含稅'}，付款方式如下：</p><ol>${pay}</ol>${bank}`}
+  case 'schedule':return `<p>乙方於甲方素材到齊${c.pct>0?'且訂金入帳':''}之次一工作日起 ${S.rush?P.rushDays:esc(P.normalDays)} 個工作天內交付初版成品${S.dueDate?`，預計交件日為 ${fmtD(S.dueDate)}`:''}。如因甲方延遲提供素材或回覆修改意見，交件日依延遲天數順延。</p>`;
+  case 'material':return `<p>甲方提供之影片、照片、音樂、商標及文字等素材，應確保具有合法使用權，並已取得素材中人物之肖像使用同意。如因甲方提供之素材致第三人主張權利，由甲方自行負責。乙方使用之配樂與音效，以平台內建或已取得授權之曲庫為原則。</p>`;
+  case 'revision':return `<p>每支成品交付後，甲方享有 ${S.revisions} 次免費修改，修改意見請整理後一次提出。超過次數之修改，每次加收 ${money(S.revisionFee)}。修改以原定方向之細部調整為限；如變更主題、腳本或整體風格，視為新需求，另行報價。</p>`;
+  case 'shoot':return `<p>拍攝日期為 ${S.shoot.date?fmtD(S.shoot.date):'雙方另行約定之日期'}，地點為 ${esc(S.shoot.place)||'甲方指定地點'}，拍攝時間以 ${S.shoot.hours} 小時計，自乙方到場起算；超出時數每小時加收 ${money(P.shootRate)}。拍攝場地之租借、許可及現場人員安排由甲方負責。如遇天候不佳或不可抗力因素無法拍攝，雙方協議改期，不另收費。</p>`;
+  case 'rush':return `<p>本案為急件，乙方於素材到齊${c.pct>0?'且訂金入帳':''}後 ${P.rushDays} 個工作天內交付初版成品，急件費用（加收 ${P.rushRate}%）已列於報價單。急件之修改回覆時程由雙方另行約定。</p>`;
+  case 'rights':return `<p>甲方付清全部款項後，取得成品影片之使用權，得用於甲方自有之社群平台、官方網站及廣告投放，不限期間與次數。乙方保留著作人格權。原始專案檔、未使用素材及乙方拍攝之未使用畫面，不在交付範圍內，如有需要另行議價。</p>`;
+  case 'portfolio':return `<p>乙方得於甲方正式發布後，將本案成品用於作品集及乙方社群平台（IG @by.roughcut），署名格式為「委託｜${esc(S.client.ig||S.client.name||'甲方')} / 剪輯｜@by.roughcut」。</p>`;
+  case 'cancel':return `<p>甲方於乙方開始製作前取消，乙方退還已付訂金之 50%；開始製作後取消，訂金不予退還，已完成之工作超過訂金部分依完成比例計費。乙方如因故無法履約，應全額退還已收款項。</p>`;
+  case 'archive':return `<p>乙方自交付最終檔案之日起保存成品檔案 30 日，逾期不負保管責任，請甲方自行備份。</p>`;
+  case 'confidential':return `<p>雙方對於因本案知悉之對方營業資訊、未公開之產品或活動內容負保密義務，未經對方同意不得對外揭露，契約終止後亦同。</p>`;
+  case 'dispute':return `<p>本契約未盡事宜，依中華民國法律及誠信原則協商處理。如有爭議，雙方同意以${esc(S.court)}為第一審管轄法院。本契約一式兩份，由雙方各執一份為憑。</p>`;
+  case 'nopublic':return `<p>本案成品不公開，乙方不得將成品用於作品集或任何公開展示。</p>`;
+  }
+}
+
+/* ---------- 文件區塊 ---------- */
+const LOGO=`<svg viewBox="-34 -34 68 68"><rect x="-9" y="-31" width="18" height="27" rx="4" fill="#C4603A" opacity=".95"/><rect x="-9" y="-31" width="18" height="27" rx="4" fill="#4A7B7B" opacity=".78" transform="rotate(72)"/><rect x="-9" y="-31" width="18" height="27" rx="4" fill="#D49B50" opacity=".58" transform="rotate(144)"/><rect x="-9" y="-31" width="18" height="27" rx="4" fill="#D4785A" opacity=".42" transform="rotate(216)"/><rect x="-9" y="-31" width="18" height="27" rx="4" fill="#6BA3A3" opacity=".30" transform="rotate(288)"/><circle r="5" fill="#C4603A"/></svg>`;
+function quoteBlocks(c){
+  const B=[];const cl=S.client;
+  B.push(`<div class="blk q-head"><div class="brand">${LOGO}<div><div class="bn">粗花<span class="mono">ROUGHCUT</span></div><div class="tg">故事成形，影像成花</div></div></div><div class="q-title"><div class="t">報價單</div><div class="en">QUOTATION</div></div></div>`);
+  B.push(`<div class="blk" style="margin-bottom:0"><div class="rule"></div></div>`);
+  B.push(`<div class="blk meta"><div><div class="k">報價單號</div><div class="v mono">${esc(S.quoteNo)}</div></div><div><div class="k">報價日期</div><div class="v">${fmtD(S.quoteDate)}</div></div><div><div class="k">有效期限</div><div class="v">${fmtD(addDays(S.quoteDate,S.validDays))}</div></div><div><div class="k">案件名稱</div><div class="v" style="font-family:var(--f-body)">${esc(S.project)||'—'}</div></div></div>`);
+  const cLines=[cl.contact&&'聯絡人　'+esc(cl.contact),cl.phone&&'電話　'+esc(cl.phone),cl.email&&esc(cl.email),cl.taxId&&'統編　'+esc(cl.taxId)].filter(Boolean);
+  const mLines=[ME.owner&&'負責人　'+esc(ME.owner),ME.phone&&'電話　'+esc(ME.phone),ME.email&&esc(ME.email),'IG　@by.roughcut',ME.line&&'LINE　'+esc(ME.line)].filter(Boolean);
+  B.push(`<div class="blk parties"><div class="party"><h5>委託方 CLIENT</h5><div class="nm">${esc(cl.name)||'—'}</div>${cLines.map(l=>`<div class="ln">${l}</div>`).join('')}</div><div class="party"><h5>製作方 STUDIO</h5><div class="nm">粗花 ROUGHCUT</div>${mLines.map(l=>`<div class="ln">${l}</div>`).join('')}</div></div>`);
+  if(S.desc)B.push(`<div class="blk desc"><h5>專案說明</h5><p>${esc(S.desc)}</p></div>`);
+  const groups=[['edit','剪輯製作',c.edit],['shoot','外出拍攝',c.shoot],['other','其他項目',c.other]];
+  let rows='';groups.forEach(([k,n,sub])=>{const its=c.items.filter(i=>i.cat===k);if(!its.length)return;
+    rows+=`<tr class="grp"><td colspan="4">${n}</td><td class="r">${money(sub)}</td></tr>`;
+    its.forEach(i=>rows+=`<tr><td>${esc(i.name)}</td><td class="sp">${esc(i.spec)}</td><td class="r">${i.qty} ${i.unit}</td><td class="r">${money(i.price)}</td><td class="r">${money(i.sub)}</td></tr>`)});
+  if(!rows)rows=`<tr><td colspan="5" class="sp" style="text-align:center;padding:18px">尚未加入項目</td></tr>`;
+  B.push(`<div class="blk"><table class="items"><thead><tr><th style="width:30%">項目</th><th>規格說明</th><th class="r" style="width:70px">數量</th><th class="r" style="width:80px">單價</th><th class="r" style="width:86px">小計</th></tr></thead><tbody>${rows}</tbody></table></div>`);
+  const ln=[[ '項目合計',money(c.edit+c.shoot+c.other),'']];
+  if(c.discount)ln.push([`多支優惠（剪輯 ${100-P.multiRate} 折）`,'−'+money(c.discount),'neg']);
+  if(c.allowance)ln.push(['額外折讓','−'+money(c.allowance),'neg']);
+  if(c.rush)ln.push([`急件加收 ${P.rushRate}%`,'+'+money(c.rush),'']);
+  if(c.tax)ln.push(['營業稅 5%','+'+money(c.tax),'']);
+  let pay='';if(c.pct>0&&c.pct<100)pay=`<div class="ln"><span>訂金 ${c.pct}%（簽約後 ${S.depositDays} 日內）</span><span>${money(c.deposit)}</span></div><div class="ln"><span>尾款（交件確認後 ${S.balanceDays} 日內）</span><span>${money(c.balance)}</span></div>`;
+  else if(c.pct>=100)pay=`<div class="ln"><span>簽約後 ${S.depositDays} 日內一次付清</span><span>${money(c.total)}</span></div>`;
+  else pay=`<div class="ln"><span>交件確認後 ${S.balanceDays} 日內付清</span><span>${money(c.total)}</span></div>`;
+  const bank=ME.bank||ME.acc?`<div class="bank">匯款｜${esc(ME.bank)}<br>戶名｜${esc(ME.accName)}　帳號｜${esc(ME.acc)}</div>`:'';
+  B.push(`<div class="blk sum"><div class="pay"><h5>付款方式</h5>${pay}${bank}</div><div><div class="lines">${ln.map(l=>`<div class="${l[2]}"><span>${l[0]}</span><span>${l[1]}</span></div>`).join('')}</div><div class="grand"><span>總計 ${S.tax?'（含稅）':'（未稅）'}</span><b>${money(c.total)}</b></div><div class="cn">新臺幣${cnAmount(c.total)}</div></div></div>`);
+  const notes=['基礎剪輯包含：素材挑選、排列剪輯、配樂、基本轉場'];
+  if(S.shoot.on)notes.push(`拍攝服務包含到場拍攝與基本運鏡，超時每小時 ${money(P.shootRate)}`);
+  if(c.videoCount)notes.push(`每支含 ${S.revisions} 次免費修改，超過每次 ${money(S.revisionFee)}`);
+  notes.push(`交件時程：素材到齊後 ${S.rush?P.rushDays:esc(P.normalDays)} 個工作天${S.rush?'（急件）':''}`);
+  notes.push('輸出規格：9:16 直式，適用 IG Reels／TikTok／抖音');
+  notes.push(`本報價有效至 ${fmtD(addDays(S.quoteDate,S.validDays))}，確認後請回簽或於 LINE 回覆「確認報價」`);
+  B.push(`<div class="blk notes"><h5>服務說明</h5><ul>${notes.map(n=>`<li>${n}</li>`).join('')}</ul><div class="sign" style="margin-top:22px"><div class="s"><span>委託方確認簽章</span><span>日期</span></div><div class="s"><span>粗花 ROUGHCUT</span><span>${fmtD(S.quoteDate)}</span></div></div></div>`);
+  return B;
+}
+function contractBlocks(c){
+  const B=[];const cl=S.client;
+  B.push(`<div class="blk c-head">${LOGO.replace('<svg','<svg style="width:40px;height:40px"')}<div class="t">短影音製作合作契約書</div><div class="no">CONTRACT NO. ${esc(S.quoteNo.replace(/^QT/,'CT'))}</div></div>`);
+  B.push(`<div class="blk c-intro"><p>立契約書人</p><p>委託方：<b>${esc(cl.name)||'＿＿＿＿＿＿'}</b>（以下簡稱甲方）</p><p>製作方：<b>粗花 ROUGHCUT</b>${ME.owner?'（負責人 '+esc(ME.owner)+'）':''}（以下簡稱乙方）</p><p>茲就「${esc(S.project||'短影音製作')}」合作事宜，雙方同意訂立本契約，條款如下：</p></div>`);
+  let n=0;
+  CLAUSES.forEach(cd=>{let key=cd.k;const on=clauseOn(cd.k,c);
+    if(cd.k==='portfolio'&&!on)key='nopublic';else if(!on)return;
+    n++;B.push(`<div class="blk cl"><h4><span class="no">第${cnNum(n)}條</span>${key==='nopublic'?'作品不公開':cd.t}</h4>${clauseText(key,c)}</div>`)});
+  if(S.otherTerms.trim()){n++;B.push(`<div class="blk cl"><h4><span class="no">第${cnNum(n)}條</span>其他約定</h4><p style="white-space:pre-wrap">${esc(S.otherTerms)}</p></div>`)}
+  B.push(`<div class="blk c-sign"><div class="box"><h5>甲方｜委託方</h5><div><span>名稱</span><span>${esc(cl.name)}</span></div><div><span>代表人</span><span>${esc(cl.contact)}</span></div><div><span>統一編號</span><span>${esc(cl.taxId)}</span></div><div><span>電話</span><span>${esc(cl.phone)}</span></div><div class="stamp"><span>簽章</span></div></div><div class="box"><h5>乙方｜製作方</h5><div><span>名稱</span><span>粗花 ROUGHCUT</span></div><div><span>負責人</span><span>${esc(ME.owner)}</span></div><div><span>Email</span><span>${esc(ME.email)}</span></div><div><span>電話</span><span>${esc(ME.phone)}</span></div><div class="stamp"><span>簽章</span></div></div></div>`);
+  B.push(`<div class="blk c-date">${roc('')}</div>`);
+  return B;
+}
+
+/* ---------- 分頁預覽 ---------- */
+const CONTENT_H=999,GAP=16;
+function paginate(blocks){
+  const m=$('#measure');m.innerHTML=blocks.join('');const pages=[];let cur=[],h=0;
+  [...m.children].forEach((el,i)=>{const bh=el.offsetHeight+GAP;if(h+bh>CONTENT_H&&cur.length){pages.push(cur);cur=[];h=0}cur.push(blocks[i]);h+=bh});
+  if(cur.length)pages.push(cur);return pages;
+}
+let lastCalc=null;
+function renderDoc(){
+  const c=calc();lastCalc=c;
+  const mode=S.mode;let all=[];
+  if(mode!=='contract')paginate(quoteBlocks(c)).forEach(p=>all.push({g:'quote',p}));
+  if(mode!=='quote')paginate(contractBlocks(c)).forEach(p=>all.push({g:'contract',p}));
+  const N=all.length;
+  $('#pages').innerHTML=all.map((x,i)=>`<div class="pwrap" data-g="${x.g}"><div class="page paper"><div class="pbody">${x.p.join('')}</div><div class="pfoot"><span>粗花 ROUGHCUT · @by.roughcut</span><span>${x.g==='quote'?'報價單':'合約'} ${esc(S.quoteNo)}</span><span>${i+1} / ${N}</span></div></div></div>`).join('');
+  fitPages();updateDock(c);
+}
+function fitPages(){const box=$('#pages');const w=box.clientWidth;if(!w)return;const s=Math.min(1,w/794);
+  box.querySelectorAll('.pwrap').forEach(pw=>{pw.style.width=794*s+'px';pw.style.height=1123*s+'px';pw.firstElementChild.style.transform=`scale(${s})`})}
+new ResizeObserver(fitPages).observe($('#pages'));
+let rt;const schedule=()=>{clearTimeout(rt);rt=setTimeout(renderDoc,120)};
+
+function updateDock(c){$('#dockTotal').textContent=money(c.total);
+  $('#dockSub').textContent=c.pct>0&&c.pct<100?`總價・訂金 ${money(c.deposit)}`:'總價';
+  $('#mEdit').textContent=c.videoCount?`${c.videoCount} 支・${money(c.edit)}`:'';
+  $('#mShoot').textContent=S.shoot.on?money(c.shoot):'不需要';
+  $('#mOther').textContent=c.other?money(c.other):'';
+  $('#multiHint').textContent=`滿 ${P.multiMin} 支剪輯打 ${100-P.multiRate} 折・${S.multi==null?'目前自動判斷':'你手動設定'}${c.discount?'，省 '+money(c.discount):''}`;
+  $('#multiOn').checked=c.multi;
+  $('#rushHint').textContent=`${P.rushDays} 個工作天交件，加收 ${P.rushRate}%${c.rush?'（+'+money(c.rush)+'）':''}`;
+  $('#mClause').textContent=CLAUSES.filter(x=>clauseOn(x.k,c)).length+' 條';
+  renderClauses(c);
+}
+
+/* ---------- 編輯器 ---------- */
+function fillInputs(){document.querySelectorAll('[data-k]').forEach(el=>{const v=getK(el.dataset.k);if(el.type==='checkbox')el.checked=!!v;else el.value=v==null?'':v})}
+function renderVideos(){
+  $('#videoList').innerHTML=S.videos.map((v,i)=>`<div class="card" data-id="${v.id}">
+    <div class="card-h"><span>影片規格 ${i+1}</span>${S.videos.length>1?`<button class="link" data-act="vdel">移除</button>`:''}</div>
+    <div class="seg">${Object.keys(DUR).map(k=>`<button data-act="vdur" data-v="${k}" aria-pressed="${v.dur===k}">${DUR[k]}<span class="p" style="margin-left:4px">$${P.dur[k]}</span></button>`).join('')}</div>
+    <div class="row"><span style="font-size:14px">支數</span><span class="stepper"><button data-act="vcnt" data-d="-1" aria-label="減少">−</button><output>${v.count}</output><button data-act="vcnt" data-d="1" aria-label="增加">＋</button></span></div>
+    <div><div class="hint" style="margin-bottom:6px">加購（每支）</div><div class="seg">${Object.keys(ADDON).map(a=>`<button class="chip" data-act="vaddon" data-v="${a}" aria-pressed="${v.addons.includes(a)}">${ADDON[a]}<span class="p">+$${P.addon[a]}</span></button>`).join('')}</div></div></div>`).join('');
+}
+function renderShoot(){$('#shootBox').hidden=!S.shoot.on;$('#shootHours').textContent=S.shoot.hours;$('#shootRateHint').textContent=`× $${P.shootRate}/hr`;
+  $('#locSeg').innerHTML=Object.keys(LOC).map(k=>`<button data-act="sloc" data-v="${k}" aria-pressed="${S.shoot.loc===k}">${LOC[k]}<span class="p" style="margin-left:4px">${P.transport[k]?'+$'+P.transport[k]:'免'}</span></button>`).join('')}
+function renderExtras(){$('#extraList').innerHTML=S.extras.map(x=>`<div class="card" data-id="${x.id}"><div class="xrow">
+  <label class="f n">項目名稱<input id="xn-${x.id}" data-x="name" value="${esc(x.name)}"></label>
+  <label class="f n">規格說明<input id="xs-${x.id}" data-x="spec" value="${esc(x.spec)}"></label>
+  <label class="f">數量<input id="xq-${x.id}" type="number" min="1" inputmode="numeric" data-x="qty" value="${esc(x.qty)}"></label>
+  <label class="f">單價<input id="xp-${x.id}" type="number" min="0" inputmode="numeric" data-x="price" value="${esc(x.price)}"></label></div>
+  <button class="link" data-act="xdel" style="align-self:flex-end">刪除這項</button></div>`).join('')}
+function renderClauses(c){const box=$('#clauseList');const html=CLAUSES.map(cd=>{const auto=cd.auto(c);const ov=S.clauseOv[cd.k];const on=ov==null?auto:ov;
+  return `<label class="clause"><input type="checkbox" id="cl-${cd.k}" data-clause="${cd.k}" ${on?'checked':''}><span>${cd.t}${ov==null?`<span class="tag">自動</span>`:`<span class="tag off">手動</span>`}${cd.d?`<small>${cd.d}</small>`:''}</span></label>`}).join('');
+  if(box.innerHTML!==html)box.innerHTML=html}
+function renderRecords(){const list=LS.get('rc-quotes',[]);$('#mRec').textContent=list.length?list.length+' 份':'';
+  $('#recList').innerHTML=list.length?list.map(r=>`<div class="rec" data-no="${esc(r.no)}"><div class="info"><b>${esc(r.no)}</b><span>${esc(r.client||'未填委託方')}・${money(r.total)}・${esc(r.at)}</span></div><button class="btn" data-act="load">開啟</button><button class="btn danger" data-act="del">刪除</button></div>`).join(''):'<p class="hint">還沒有儲存的報價。</p>'}
+function renderMode(){document.querySelectorAll('#modeSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===S.mode))}
+function renderAll(){fillInputs();renderVideos();renderShoot();renderExtras();renderRecords();renderMode();$('#sampleBar').hidden=!S.sample;renderDoc()}
+function touch(){if(S.sample){S.sample=false;$('#sampleBar').hidden=true}persist();schedule()}
+
+document.addEventListener('input',e=>{const el=e.target;
+  if(el.dataset.k){let v=el.type==='checkbox'?el.checked:el.value;if(el.type==='number'||el.tagName==='SELECT')v=v===''?0:Number(v);setK(el.dataset.k,v);
+    if(el.dataset.k==='s.shoot.on')renderShoot();if(el.dataset.k.startsWith('p.')){renderVideos();renderShoot()}touch()}
+  else if(el.dataset.x){const id=el.closest('.card').dataset.id;const x=S.extras.find(y=>y.id===id);x[el.dataset.x]=el.type==='number'?Number(el.value):el.value;touch()}
+});
+document.addEventListener('change',e=>{const el=e.target;
+  if(el.id==='multiOn'){S.multi=el.checked;touch()}
+  if(el.dataset.clause){const k=el.dataset.clause;const auto=CLAUSES.find(x=>x.k===k).auto(calc());S.clauseOv[k]=el.checked===auto?null:el.checked;if(S.clauseOv[k]==null)delete S.clauseOv[k];touch()}
+});
+let delArm=null;
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;const card=b.closest('.card');const v=card&&S.videos.find(x=>x.id===card.dataset.id);
+  switch(a){
+  case 'view':setView(b.dataset.v);break;
+  case 'vdur':v.dur=b.dataset.v;renderVideos();touch();break;
+  case 'vcnt':v.count=Math.max(1,Math.min(50,v.count+ +b.dataset.d));renderVideos();touch();break;
+  case 'vaddon':{const k=b.dataset.v;v.addons=v.addons.includes(k)?v.addons.filter(x=>x!==k):[...v.addons,k];renderVideos();touch();break}
+  case 'vadd':S.videos.push({id:uid(),dur:'s30',count:1,addons:[]});renderVideos();touch();break;
+  case 'vdel':S.videos=S.videos.filter(x=>x.id!==card.dataset.id);renderVideos();touch();break;
+  case 'shours':S.shoot.hours=Math.max(1,Math.min(12,S.shoot.hours+ +b.dataset.d));renderShoot();touch();break;
+  case 'sloc':S.shoot.loc=b.dataset.v;renderShoot();touch();break;
+  case 'xadd':S.extras.push({id:uid(),name:'',spec:'',qty:1,price:0});renderExtras();touch();setTimeout(()=>{const i=$('#xn-'+S.extras[S.extras.length-1].id);i&&i.focus()},30);break;
+  case 'xdel':S.extras=S.extras.filter(x=>x.id!==card.dataset.id);renderExtras();touch();break;
+  case 'mode':S.mode=b.dataset.v;renderMode();persist();renderDoc();break;
+  case 'clearSample':{const keep=S.mode;S=blank();S.mode=keep;persist();renderAll();toast('已清空，從案件資訊開始填吧');break}
+  case 'resetPrices':P=JSON.parse(JSON.stringify(DEF_P));persist();renderAll();toast('價目已恢復預設');break;
+  case 'save':saveQuote();break;
+  case 'newq':{const keep=S.mode;S=blank();S.mode=keep;persist();renderAll();toast('開好新報價 '+S.quoteNo);break}
+  case 'load':{const no=b.closest('.rec').dataset.no;const r=LS.get('rc-quotes',[]).find(x=>x.no===no);if(r){S=JSON.parse(JSON.stringify(r.state));persist();renderAll();toast('已開啟 '+no)}break}
+  case 'del':{const rec=b.closest('.rec');const no=rec.dataset.no;if(delArm!==no){delArm=no;b.textContent='確定刪除';setTimeout(()=>{if(delArm===no){delArm=null;b.textContent='刪除'}},3000);break}
+    LS.set('rc-quotes',LS.get('rc-quotes',[]).filter(x=>x.no!==no));delArm=null;renderRecords();toast('已刪除 '+no);break}
+  case 'copy':copyText();break;
+  case 'png':exportPNG();break;
+  case 'pdf':exportPDF();break;
+  case 'closeModal':$('#modal').hidden=true;break;
+  }
+});
+function saveQuote(){const c=calc();const list=LS.get('rc-quotes',[]).filter(x=>x.no!==S.quoteNo);
+  const d=new Date();list.unshift({no:S.quoteNo,client:S.client.name,total:c.total,at:`${d.getMonth()+1}/${d.getDate()} ${pad(d.getHours())}:${pad(d.getMinutes())}`,state:JSON.parse(JSON.stringify(S))});
+  LS.set('rc-quotes',list.slice(0,60));renderRecords();toast('已儲存 '+S.quoteNo)}
+function setView(v){document.body.dataset.view=v;$('#tabEdit').setAttribute('aria-pressed',v==='edit');$('#tabPrev').setAttribute('aria-pressed',v==='preview');if(v==='preview'){requestAnimationFrame(fitPages);window.scrollTo(0,0)}}
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2400)}
+
+/* ---------- 輸出 ---------- */
+function quoteText(){const c=calc();const L=[];const line='────────────';
+  L.push('粗花 ROUGHCUT｜報價單');L.push(`${S.quoteNo}　${fmtD(S.quoteDate)}`);L.push(line);
+  if(S.project)L.push('案件：'+S.project);if(S.client.name)L.push('委託：'+S.client.name);L.push(line);
+  c.items.forEach(i=>L.push(`${i.name} × ${i.qty}${i.unit}　${money(i.sub)}`));
+  if(c.discount)L.push(`多支優惠 ${100-P.multiRate} 折　−${money(c.discount)}`);
+  if(c.allowance)L.push(`額外折讓　−${money(c.allowance)}`);
+  if(c.rush)L.push(`急件加收 ${P.rushRate}%　+${money(c.rush)}`);
+  if(c.tax)L.push(`營業稅 5%　+${money(c.tax)}`);
+  L.push(line);L.push(`總計 ${money(c.total)}${S.tax?'（含稅）':'（未稅）'}`);
+  if(c.pct>0&&c.pct<100)L.push(`訂金 ${c.pct}%：${money(c.deposit)}／尾款：${money(c.balance)}`);
+  L.push('');L.push(`・每支含 ${S.revisions} 次免費修改`);L.push(`・素材到齊後 ${S.rush?P.rushDays:P.normalDays} 個工作天交件`);L.push(`・報價有效至 ${fmtD(addDays(S.quoteDate,S.validDays))}`);
+  L.push('');L.push('粗花 ROUGHCUT・@by.roughcut');return L.join('\n')}
+function copyText(){const t=quoteText();const fb=()=>{modal(`<b>複製報價文字</b><p class="hint">這個畫面不允許自動複製，請長按全選後複製。</p><textarea id="cpTa" readonly>${esc(t)}</textarea><button class="btn" data-act="closeModal">關閉</button>`);const ta=$('#cpTa');ta.focus();ta.select()};
+  try{navigator.clipboard.writeText(t).then(()=>toast('已複製，可以直接貼到 LINE'),fb)}catch(e){fb()}}
+function modal(h){$('#modalIn').innerHTML=h;$('#modal').hidden=false}
+async function capture(group){
+  if(!window.html2canvas)throw new Error('lib');
+  const wasView=document.body.dataset.view;if(window.innerWidth<1024)setView('preview');
+  try{await document.fonts.ready}catch(e){}renderDoc();await new Promise(r=>setTimeout(r,250));
+  const els=[...document.querySelectorAll('#pages .pwrap')].filter(p=>!group||p.dataset.g===group).map(p=>p.firstElementChild);
+  const out=[];
+  for(const el of els){out.push(await html2canvas(el,{scale:2,backgroundColor:'#FFFDF9',logging:false,width:794,height:1123,windowWidth:1280,
+    onclone:(d,c)=>{c.style.transform='none';const w=c.parentElement;if(w){w.style.width='794px';w.style.height='1123px';w.style.overflow='visible'}}}))}
+  if(wasView==='edit'&&window.innerWidth<1024)setView('edit');
+  return out}
+const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function saveBlob(blob,name){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)}
+const fname=ext=>`粗花${S.mode==='contract'&&ext==='pdf'?'合約':'報價'}_${(S.client.name||'未命名').replace(/[\\/:*?"<>|（）()]/g,'')}_${S.quoteNo}.${ext}`;
+async function exportPNG(){toast('正在產生圖片…');
+  try{if(S.mode==='contract'){S.mode='both';renderMode()}
+    const cs=await capture('quote');if(!cs.length){toast('沒有報價單頁面');return}
+    const W=cs[0].width,H=cs.reduce((a,c)=>a+c.height,0);const cv=document.createElement('canvas');cv.width=W;cv.height=H;const ctx=cv.getContext('2d');let y=0;cs.forEach(c=>{ctx.drawImage(c,0,y);y+=c.height});
+    if(IOS){showImg(cv);return}
+    const blob=await new Promise(r=>cv.toBlob(r,'image/png'));saveBlob(blob,fname('png'));toast('圖片已下載，可以傳到 LINE')}catch(e){toast('圖片產生失敗，請稍後再試')}}
+function showImg(cv){modal(`<b>報價單圖片</b><p class="hint">長按圖片選「加入照片」或直接分享到 LINE。</p><img src="${cv.toDataURL('image/jpeg',.92)}" alt="報價單圖片"><button class="btn" data-act="closeModal">關閉</button>`)}
+async function exportPDF(){toast('正在產生 PDF…');
+  try{const cs=await capture(null);if(!window.jspdf)throw new Error('lib');
+    const pdf=new window.jspdf.jsPDF({unit:'pt',format:'a4',compress:true});
+    cs.forEach((c,i)=>{if(i)pdf.addPage();pdf.addImage(c.toDataURL('image/jpeg',.93),'JPEG',0,0,595.28,841.89)});
+    saveBlob(pdf.output('blob'),fname('pdf'));toast('PDF 已下載')
+  }catch(e){toast('PDF 產生失敗，請稍後再試')}}
+
+document.body.dataset.view='edit';
+renderAll();
+if(document.fonts){document.fonts.ready.then(renderDoc);document.fonts.addEventListener&&document.fonts.addEventListener('loadingdone',schedule)}
+})();
+</script>
+
+</body>
+</html>
